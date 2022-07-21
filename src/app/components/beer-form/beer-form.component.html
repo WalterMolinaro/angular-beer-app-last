@@ -1,0 +1,67 @@
+<div class="card card-shadow">
+  <div class="card-header">Add Bear</div>
+  <div class="card-body">
+    <form [formGroup]="beerForm">
+      <input
+        type="text"
+        class="form-control mb-3"
+        formControlName="beerName"
+        placeholder="Bear Title"
+        [ngClass]="
+          beerForm.controls.beerName.invalid &&
+          beerForm.controls.beerName.touched
+            ? 'is-invalid'
+            : ''
+        "
+      />
+      <input
+        type="text"
+        class="form-control mb-3"
+        formControlName="upc"
+        placeholder="Upc code"
+        [ngClass]="
+          beerForm.controls.upc.invalid && beerForm.controls.upc.touched
+            ? 'is-invalid'
+            : ''
+        "
+      />
+      <input
+        type="number"
+        class="form-control mb-3"
+        formControlName="price"
+        placeholder="Beer Price"
+        [ngClass]="
+          beerForm.controls.price.invalid && beerForm.controls.price.touched
+            ? 'is-invalid'
+            : ''
+        "
+      />
+      <select
+        class="form-select mb-3"
+        formControlName="beerStyle"
+        placeholder="Bear Style"
+        [ngClass]="
+          beerForm.controls.beerStyle.invalid &&
+          beerForm.controls.beerStyle.touched
+            ? 'is-invalid'
+            : ''
+        "
+      >
+        <option [ngValue]="null" disabled>Select your option</option>
+        <option *ngFor="let beerStyle of beerTypes" [ngValue]="beerStyle">
+          {{ beerStyle }}
+        </option>
+      </select>
+      <button
+        type="submit"
+        [disabled]="beerForm.invalid"
+        class="btn btn-primary"
+        (click)="onSubmit()"
+        routerLink=""
+      >
+        Submit
+      </button>
+    </form>
+    <!-- così collego la variabile del form. ngClass è una direttiva angular che ti permette di aggiungre dinamicamente delle classi solo se il form è valido -->
+  </div>
+</div>

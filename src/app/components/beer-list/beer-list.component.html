@@ -1,0 +1,12 @@
+<div class="card shadow pippo">
+  <h5 class="card-header">Beer List</h5>
+  <div class="card-body">
+    <ul
+      class="list-group"
+      *ngFor="let beer of beerService.getBeersList() | async"
+    >
+      <!--l'async sta facendo la subscription di questo metodo, legg e i dati e in automatico aggiorna la view  -->
+      <app-beer [beerComponent]="beer"></app-beer>
+    </ul>
+  </div>
+</div>
